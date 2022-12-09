@@ -1,1 +1,22 @@
 class List {
+constructor(){
+this.dataStore = [];
+// mutator methods
+ this.add = (...element) => {for(let i in element){this.dataStore[this.dataStore.length] = element[i]}}
+ this.clear = () => this.dataStore = [];
+ this.remove = (element) => this.dataStore.splice(this.find(element),1);
+ this.insertAfter = (element,after) => this.dataStore.splice(this.find(after)+1,0,element);
+ 
+// helper methods
+this.length = () => this.dataStore.length;
+this.find = (element) =>  this.dataStore.indexOf(element) > -1 ? this.dataStore.indexOf(element) : (function() {throw Error('yes');} )();
+this.print = () => console.log(this.dataStore);
+
+// positional methods
+this.pos = 0;
+ this.firstPos = () => this.pos = 0; 
+  this.lastPos = () => this.pos = this.dataStore.length - 1; 
+   this.previousPos = () => this.pos < 0 ? this.pos = 0 : this.pos -= 1; 
+   this.nextPos = () => this.pos > this.dataStore.length ? this.pos = this.lastPos() : this.pos += 1; 
+ }
+}
