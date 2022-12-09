@@ -8,7 +8,7 @@ List.prototype.insertSmall = function insertIfSmaller(element){
       if(this.dataStore.filter(a=>a<element) == 0){this.add(element)}
       break
     case "number":
-      if(Math.min.apply(null,this.dataStore.filter(a=>typeof(a)=='number'))>element){this.add(element)}
+      if(Math.min.apply(null,this.dataStore.filter(a=>typeof(a)=='number'))>element){this.add(element)}////Math.min(...this.dataStore.filter(a=>typeof(a)=='number'))>element;
       break
     default:
       throw new Error('wrong datatype')
