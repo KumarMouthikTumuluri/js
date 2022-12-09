@@ -25,3 +25,6 @@ this.pos = 0;
     this.loopBack = function(fn){for(this.lastPos();this.currentPos() >= 0;this.previousPos()){fn(this.getPos())}}
  }
 }
+
+
+module.exports = List;
