@@ -11,7 +11,7 @@ switch (typeof(element)){
     if(this.dataStore.filter(a=>a>element) == 0){this.add(element)}
     break;
   case "number" :
-    if(Math.max.apply(null,this.dataStore.filter(a=>typeof(a)=='number'))<element){this.add(element)} //Math.max(...this.dataStore.filter(a=>typeof(a)=='number'));
+    if(Math.max.apply(null,this.dataStore.filter(a=>typeof(a)=='number'))<element){this.add(element)} //Math.max(...this.dataStore.filter(a=>typeof(a)=='number'))<element;
     break;
     
   default:
