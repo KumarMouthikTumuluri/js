@@ -1,1 +1,13 @@
-xxxx
+#Create a grades object that stores a set of student grades in an object. Provide a function for adding a grade and a function for displaying the student’s grade average
+
+
+
+#########################################################################################################################################################################
+#Store a set of words in an array and display the contents both forward and backward.
+
+console.log('\n### Excercise 2');
+const arrayWords = ["hello ","my ","friend "];
+console.log(`orginal array: ${arrayWords} `);
+console.log(`display in forward :${arrayWords.reduce((total,word) => total+word)}`);
+console.log(`display in forward :${arrayWords.reduceRight((total,word) => total+word)}`);
+#########################################################################################################################################################################
