@@ -11,3 +11,16 @@ console.log(`orginal array: ${arrayWords} `);
 console.log(`display in forward :${arrayWords.reduce((total,word) => total+word)}`);
 console.log(`display in forward :${arrayWords.reduceRight((total,word) => total+word)}`);
 #########################################################################################################################################################################
+
+
+
+
+
+#########################################################################################################################################################################
+Create an object that stores individual letters in an array and has a function for
+displaying the letters as a single word
+
+console.log('\n### Excercise 4');
+
+const letters = ['a','b','a','c','a','d','a','b','r','a'];
+console.log(letters.reduce((all, letter) => all + letter));
