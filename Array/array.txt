@@ -1,5 +1,76 @@
 #Create a grades object that stores a set of student grades in an object. Provide a function for adding a grade and a function for displaying the student’s grade average
 
+class grades {
+
+  constructor(grades = []) {
+    this.grades = grades;
+  }
+
+  addGrade(grade) {
+    this.grades = [...this.grades, grade];
+  }
+
+  displayAvg(){
+    let sum = 0;
+    this.grades.forEach(grade => sum += grade );
+    return sum / this.grades.length;
+  }
+}
+
+// Implementation of the grade using classes
+console.log('### Excercise 1');
+console.log('## Using ES6 Class, using the new keyword');
+const gradeObj = [90,89,75,90,89,75,90,89,75,90,89,75,90,89,75,90,89,75];
+const grade    = new grades(gradeObj);
+grade.addGrade(90);
+grade.addGrade(25);
+console.log(`Avg grade: ${grade.displayAvg()}`);
+
+const gradesProto = {
+  init(grades = []) {
+    this.grades = grades;
+    return this;
+  },
+  addGrade(grade) {
+    this.grades.push(grade);
+  },
+  displayAvg() {
+    let sum = this.grades.reduce((grades, grade) => grades += grade, 0);
+    return sum / this.grades.length;
+  }
+}
+
+// Implementation of the grade prototype
+console.log('\n## Using prototype, using Object.create()');
+const gradeO = [90,89,75,90,89,75,90,89,75,90,89,75,90,89,75,90,89,75];
+const gradeP = Object.create(gradesProto).init(gradeO);
+gradeP.addGrade(90);
+gradeP.addGrade(25);
+console.log(`Avg grade: ${gradeP.displayAvg()}`);
+
+
+const gradesFactory = () => {
+  let grades = [];
+  return {
+    init(g = []) {
+      grades = g;
+      return this;
+    },
+    addGrade(grade) {
+      grades.push(grade);
+    },
+    displayAvg() {
+      let sum = grades.reduce((g, grade) => g += grade, 0);
+      return sum / grades.length;
+    }
+  }
+}
+// Implementation of the grade factory
+console.log('\n## Using prototype, using factory');
+const grade3 = gradesFactory().init(gradeO);
+grade3.addGrade(90);
+grade3.addGrade(25);
+console.log(`Avg grade: ${grade3.displayAvg()}`);
 
 
 #########################################################################################################################################################################
