@@ -112,12 +112,13 @@ class weekTemps{
   
   displayMonthAvg() {
     let total=0;
-    var arr=this.dataStore;;
+    var arr=this.dataStore;
     var result=[].concat(...arr);
+    //var result = arr.reduce((acc, val) => acc.concat(val), []);
     result.forEach(item => total += item );
 
     
-    return (total/result.leng);
+    return (total/result.length);
   }
 }
 console.log('\n### Excercise 3');
