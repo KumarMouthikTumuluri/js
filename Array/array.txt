@@ -81,7 +81,13 @@ const arrayWords = ["hello ","my ","friend "];
 console.log(`orginal array: ${arrayWords} `);
 console.log(`display in forward :${arrayWords.reduce((total,word) => total+word)}`);
 console.log(`display in forward :${arrayWords.reduceRight((total,word) => total+word)}`);
-#########################################################################################################################################################################
+#######################################################################################################################################################################Modify the weeklyTemps object in the chapter so that it stores a month’s worth of data using a two-dimensional array. Create functions to display the monthly average,a specific week’s average, and all the weeks’ averages
+
+
+
+
+
+
 
 
 
