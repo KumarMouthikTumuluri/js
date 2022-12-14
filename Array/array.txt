@@ -108,6 +108,17 @@ class weekTemps{
     });
 
   }
+  
+  
+  displayMonthAvg() {
+    let total=0;
+    var arr=this.dataStore;;
+    var result=[].concat(...arr);
+    result.forEach(item => total += item );
+
+    
+    return (total/result.leng);
+  }
 }
 // Implementation of weekTemps class
 console.log('\n### Excercise 3');
