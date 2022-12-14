@@ -120,7 +120,6 @@ class weekTemps{
     return (total/result.leng);
   }
 }
-// Implementation of weekTemps class
 console.log('\n### Excercise 3');
 
 const randomMonth = [
@@ -129,13 +128,12 @@ const randomMonth = [
   [33,34,23,25,26,12,11],
   [14,15,18,19,22,24,25]
 ];
-
 const thisMonth = new weekTemps(randomMonth);
 
+console.log(`Month Temp avg: ${thisMonth.displayMonthAvg()}`);
 console.log(`Week 2 Temp avg: ${thisMonth.averageWeek(2)}`);
 console.log(`\nDisplay All Week Avg`);
 thisMonth.displayAllWeekAvg();
-
 
 
 
