@@ -114,6 +114,7 @@ class weekTemps{
     let total=0;
     var arr=this.dataStore;
     var result=[].concat(...arr);
+    //let result = arr.reduce((elem1, elem2) => elem1.concat(elem2));
     //var result = arr.reduce((acc, val) => acc.concat(val), []);
     result.forEach(item => total += item );
 
