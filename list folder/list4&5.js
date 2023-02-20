@@ -44,13 +44,12 @@ class movieList extends List {
     }
   }
 
-
+  
   checkIn(Customer,movie) {
     if(this.rentedList.contains(movie)) {
       this.rentedList.remove(movie);
       this.add(movie);
-      customerList.remove(Customer.name);
-      
+      customerList.remove(Customer);
     }
   }
 }
@@ -66,6 +65,8 @@ for (var i = 0; i < movies.length; ++i) {
 console.log("Available movies: \n");
 MovieList.displayList();
 
+console.log("\n\n\nCheck-out\n\n\n");
+
 MovieList.checkOut("Jane Doe", "City of God");
 MovieList.checkOut("Cris Ramirez", "Pulp Fiction");
 MovieList.checkOut("More Ramirez", "Schindler’s List");
@@ -73,24 +74,37 @@ MovieList.checkOut("Juan Colorado", "The Dark Knight");
 MovieList.checkOut("Lenin Ramirez", "Goodfellas");
 
 
-console.log('\nMovies rented: \n');
+console.log('\nMovies rented After CheckOut: \n');
 MovieList.rentedList.displayList();
 
-console.log("\nCustomer Rentals: \n");
+console.log("\nCustomer Rentals After CheckOut: \n");
 customerList.displayList();
 
-console.log("\n Available movies: \n");
+console.log("\n Available movies After CheckOut: \n");
 MovieList.displayList();
 
-MovieList.checkIn("Customer { name: 'Juan Colorado', movie: 'The Dark Knight'}","The Dark Knight");
-MovieList.checkIn("Customer { name: 'More Ramirez', movie: 'Schindler’s List'}","Schindler’s List")
 
 
-console.log('\nMovies rented: \n');
+
+console.log("\n\n\nCheck-IN\n\n\n");
+let c= customerList.dataStore;
+let movie1="The Dark Knight";
+let movie2="Schindler’s List";
+MovieList.checkIn(c[c.findIndex(x=>x.movie=== movie1)],movie1);
+MovieList.checkIn(c[c.findIndex(x=>x.movie=== movie2)],movie2);
+
+
+console.log('\nMovies rented After CheckIn: \n');
 MovieList.rentedList.displayList();
 
-console.log("\nCustomer Rentals: \n");
+console.log("\nCustomer Rentals After CheckIn: \n");
 customerList.displayList();
 
-console.log("\n Available movies: \n");
+console.log("\n Available movies After CheckIn: \n");
 MovieList.displayList();
+
+
+
+
+
+
