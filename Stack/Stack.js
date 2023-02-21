@@ -61,15 +61,19 @@ Example use case
 #########################################################################################################################################################################
 // Chapter 4 - Stacks
 
-class Stack {
-  constructor(){
-    this.data = []
-    this.top = () => this.data.length
-    this.push = (...element) => {for(var i of element){this.data.push(i)}}
-    this.pop = () => this.data.pop()
-    this.peek = () => this.data[this.data.length-1]
-    this.clear = () => this.data = []
-  }
+export class Stack{
+
+    constructor(dataStore = [], top = 0,){
+        this.dataStore = dataStore;
+        this.top=top;
+    }
+    push(element) {this.dataStore[this.top++] = element;}
+    peek() {return this.dataStore[this.top-1];}
+    pop() {return this.dataStore[--this.top];}
+    clear() {this.top = 0;}
+    length() {return this.top;}
+    isEmpty() { if(this.top === 0) return false}
+    getStack() { return this.dataStore}
 }
 
 module.exports = Stack;
