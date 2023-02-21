@@ -1,0 +1,26 @@
+import { Stack } from "./stack.module.js";
+
+function removecolour(arr,colour){
+    
+    var s = new Stack();
+    for (var i = 0; i < arr.length; ++i) {
+      
+         if(arr[i]!==colour){
+          s.push(arr[i]);
+         } 
+         
+    }
+    arr =[];
+    var converted = " ";
+    for (let j=s.length(); j > 0;j--) {
+    arr[j-1]=s.pop();
+    }
+    return arr;
+
+}
+        let arr=["white","yellow","green","white","yellow","green","white","yellow","green"];
+        let colour="yellow"
+    
+        let a=removecolour(arr,colour);
+
+        console.log(a);
