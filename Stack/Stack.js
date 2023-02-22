@@ -74,6 +74,20 @@ export class Stack{
     length() {return this.top;}
     isEmpty() { if(this.top === 0) return false}
     getStack() { return this.dataStore}
+    reverse(str) {
+        let n = str.length;
+        let obj = new Stack(n);
+        for(let i = 0; i < n; i++)
+        {obj.push(str[i]);}
+  
+       for(let i = 0; i < n; i++)
+       {
+        let ch = obj.pop();
+        str[i] = ch;
+      }
+
+    return str;
+    }
 }
 
 module.exports = Stack;
