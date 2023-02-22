@@ -1,0 +1,11 @@
+step:1 We traverse the given Postfix expression from left to right. 
+We will use a single stack Infix which stores operands and at the end will hold our resultant Infix Expression.
+step:2.For each character, we will take two decisions:
+>If the Character is a Operand we push it into Infix Stack.
+>If the Character is a Operator, we pop two elements from the Stack, 
+add last element with the operator and concatenate it with the first element and
+push the result back to the Infix Stack again for future evaluation.
+Step :3 At the time of adding a part of evaluated expression we enclose them within Parentheses to determine the order of operations.
+Step 4:When we traverse the whole string at the end, we will be left with only one value in our stack, which will be our Infix Expression.
+
+
