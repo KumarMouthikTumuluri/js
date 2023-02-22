@@ -9,3 +9,35 @@ Step :3 At the time of adding a part of evaluated expression we enclose them wit
 Step 4:When we traverse the whole string at the end, we will be left with only one value in our stack, which will be our Infix Expression.
 
 
+
+function isOperand(e)
+{
+  
+
+  if(e.match(/^[a-zA-Z0-9]+$/))
+  return true;
+ 
+}
+
+function PostfixtoInfix(exp){
+  
+  const infix = new Stack();
+  for (const key in exp) {
+    if(isOperand(exp[key])){infix.push(exp[key] + "");}
+    else{
+         let op1 = infix.peek();
+         infix.pop();
+         let op2 = infix.peek();
+         infix.pop();
+         infix.push("(" + op2 + exp[key] +op1 + ")");
+        }
+
+  }
+  return infix.peek();
+}
+let postfix =  "678-*3/";
+console.log("The Postfix Expression is: "+ postfix);
+let result = PostfixtoInfix(postfix);
+console.log("The infix Expression is: "+ result);
+
+
