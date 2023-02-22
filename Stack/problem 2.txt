@@ -1,0 +1,59 @@
+function checkOperator(op){
+        switch (op)
+        {
+            case '+':
+            case '-':
+                return 1;
+
+            case '*':
+            case '/':
+                return 2;
+
+            case '^':
+                return 3;
+
+            case '(':
+            case ')':
+            case '{':
+            case '}':
+            case '[':
+            case ']':
+            
+                return 4;
+            
+        }
+    }
+
+function infixToPostfix(exp) {
+  let value = ''
+  let s = new Stack()
+  let postfix = new Stack()
+
+  for (const key in exp) {
+    if ( exp[key] === '{' || exp[key] === '}' || exp[key] === '[' || exp[key] === ']' || exp[key] === '(' || exp[key] === ')' || exp[key] === '+' || exp[key] === '-' || exp[key] === '*' || exp[key] === '/' ) {
+      if (value !== '') {postfix.push(value);}
+      if (s.length() === 0 && checkOperator(exp[key]) !== 4) {s.push(exp[key]);} 
+	  else {
+        if (checkOperator(exp[key]) !== 4) {
+          innerLoop:
+          while (s.length() > 0) {
+            if (checkOperator(exp[key]) < checkOperator(s.peek())) {postfix.push(s.peek());s.pop();}
+            else if (checkOperator(exp[key]) === checkOperator(s.peek())) {postfix.push(s.peek());s.pop();s.push(exp[key]);break innerLoop}
+            else {
+              if (checkOperator(exp[key]) !== 4) {s.push(exp[key])}
+              break innerLoop
+            }
+          }
+        }
+      }
+      value = ''
+    } else {
+      value += exp[key]
+    }
+  }
+
+  while (s.length() > 0) {postfix.push(s.peek());s.pop();}
+  return postfix;
+}
+let expression = "({a+[b*c]}-d)";
+    console.log(infixToPostfix(expression));
