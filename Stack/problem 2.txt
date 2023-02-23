@@ -77,5 +77,56 @@ function infixToPostfix(exp) {
   while (s.length() > 0) {postfix.push(s.peek());s.pop();}
   return postfix;
 }
-let expression = "({a+[b*c]}-d)";
-    console.log(infixToPostfix(expression));
+
+
+
+
+
+
+function evalPostFix (exp) {
+  var resultStack = new Stack();
+  var postfix = exp.getStack();
+
+  for (const key in postfix) {
+    if(postfix[key]!=' '){
+    if (!isNaN(postfix[key]) ) {
+      resultStack.push(postfix[key]);
+     console.log(resultStack.getStack());
+    }
+    else{ 
+        if(postfix[key]!=' '){
+        console.log(resultStack);
+          console.log(postfix[key]);
+
+           let a = resultStack.pop();
+           let b = resultStack.pop();
+
+        
+
+              if (postfix[key] === '+'){
+                let r=(parseFloat(b, 10) + parseFloat(a, 10)).toFixed(2);
+                resultStack.push(r);console.log(resultStack.length());} 
+             else if (postfix[key] === '-'){
+                let r=(parseFloat(b, 10) - parseFloat(a, 10)).toFixed(2);
+                resultStack.push(r);console.log(resultStack.length());}
+             else if (postfix[key] === '*'){
+                let r= (parseFloat(b,10) * parseFloat(a, 10)).toFixed(2);
+                resultStack.push(r);console.log(resultStack.length());} 
+            else if (postfix[key] === '/'){ 
+                let r= (parseFloat(b,10) / parseFloat(a, 10)).toFixed(2);
+                resultStack.push(r);console.log(resultStack.length());}
+        }
+     
+      
+     
+    } 
+  }
+}
+  return resultStack.getStack()[0];
+}
+let expression = "2.3 + (23 / 12) + (3.14159 * .24)";
+   
+let a=infixToPostfix(expression);
+console.log(a);
+let b=evalPostFix(a);
+console.log(b);
