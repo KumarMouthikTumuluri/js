@@ -40,3 +40,24 @@ console.log( balancePar('(1+2*3*(4*5+3)') )
 
 
 #######################################################################################################################################################################
+
+
+function checkBalancedExpression (e) {
+  const s = stack()
+  let balanced = true
+
+  for (const key in e) {
+    if (e[key] === '(') {
+      s.push(e[key])
+    } else if (e[key] === ')') {
+      if (s.length() === 0) {
+        balanced = false
+      }
+      s.pop()
+    }
+  }
+  if (s.length() > 0) {
+      balanced = false
+  }
+  return balanced
+}
