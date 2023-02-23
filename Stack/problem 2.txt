@@ -52,7 +52,7 @@ function infixToPostfix(exp) {
   let postfix = new Stack()
 
   for (const key in exp) {
-    if ( exp[key] === '{' || exp[key] === '}' || exp[key] === '[' || exp[key] === ']' || exp[key] === '(' || exp[key] === ')' || exp[key] === '+' || exp[key] === '-' || exp[key] === '*' || exp[key] === '/' ) {
+    if ( exp[key] === '{' || exp[key] === '}' || exp[key] === '[' || exp[key] === ']' || exp[key] === '(' || exp[key] === ')' || exp[key] === '^' || exp[key] === '+' || exp[key] === '-' || exp[key] === '*' || exp[key] === '/' ) {
       if (value !== '') {postfix.push(value);}
       if (s.length() === 0 && checkOperator(exp[key]) !== 4) {s.push(exp[key]);} 
 	  else {
