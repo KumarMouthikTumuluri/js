@@ -134,12 +134,12 @@ console.log(b);
 
 
 #######################################################################################################################################################################
-/*import {Stack} from './stack.module.js';
+import {Stack} from './stack.module.js';
 
 
 function isOperand(e)
 {
-  if(e.match( /^[a-zA-Z]+$/) )
+  if(e.match( /^[a-zA-Z]+$/) || e.match( /^[+-]?([0-9]*[.])?[0-9]+$/) )
   return true;
 }
 
@@ -160,12 +160,13 @@ function checkOperator(op){
         }
     }
 
-function infixToPostfix(exp) {
+function infixToPostfix(e) {
  
   let s = new Stack();
   let postfix = new Stack();
-  console.log(exp);
   
+  let exp= e.split(' ');
+  console.log(exp);
   for (const key in exp) {
    
     if (exp[key] == '(' || exp[key] == '[' || exp[key] == '{') {s.push(exp[key]);}
@@ -195,12 +196,14 @@ function infixToPostfix(exp) {
   }
   
   return postfix.getStack().filter(e=>e!=' ');
-}*/
+}
 
 //let expression = "( A + B ) * ( C + D )";
-   
-//let a=infixToPostfix(expression.split(''));
-//console.log(a);
+  let expression = "2.3 + ( 23 / 12 ) + ( 3.14159 * .24 )"; //spaces need to be provided for readialbilty
+  let a=infixToPostfix(expression);
+  console.log(a);
 
 
+// let expression = "2.3 + ( 23 / 12 ) + ( 3.14159 * .24 )";
+// console.log(expression.split(' ').filter(e=>e.match(/^[+-]?([0-9]*[.])?[0-9]+$/)));
 
