@@ -63,32 +63,30 @@ Example use case
 
 export class Stack{
 
-    constructor(dataStore = [], top = 0,){
+    constructor(dataStore = [], top=0){
         this.dataStore = dataStore;
         this.top=top;
     }
-    push(element) {this.dataStore[this.top++] = element;}
-    peek() {return this.dataStore[this.top-1];}
-    pop() {return this.dataStore[--this.top];}
-    clear() {this.top = 0;}
-    length() {return this.top;}
-    isEmpty() { if(this.top === 0) return false}
-    getStack() { return this.dataStore}
-    reverse(str) {
-        let n = str.length;
-        let obj = new Stack(n);
-        for(let i = 0; i < n; i++)
-        {obj.push(str[i]);}
-  
-       for(let i = 0; i < n; i++)
-       {
-        let ch = obj.pop();
-        str[i] = ch;
-      }
-
-    return str;
+    push(element) {
+        this.dataStore[this.top++] = element;
     }
+    peek() {
+        return this.dataStore[this.top-1];
+    }
+    pop() {
+        return this.dataStore.splice(--this.top, 1);
+    }
+    clear() {
+        this.dataStore = [];
+        this.top=0;
+    }
+    length() {return this.top;}
+    isEmpty() {if(this.top==0) {return true;} else {return false;}}
+    getStack() { return this.dataStore}
+    
 }
+
+
 
 module.exports = Stack;
 
