@@ -130,3 +130,77 @@ let a=infixToPostfix(expression);
 console.log(a);
 let b=evalPostFix(a);
 console.log(b);
+
+
+
+#######################################################################################################################################################################
+/*import {Stack} from './stack.module.js';
+
+
+function isOperand(e)
+{
+  if(e.match( /^[a-zA-Z]+$/) )
+  return true;
+}
+
+function checkOperator(op){
+        switch (op)
+        {
+            case '+':
+            case '-':
+                return 1;
+
+            case '*':
+            case '/':
+                return 2;
+
+            case '^':
+                return 3;
+       
+        }
+    }
+
+function infixToPostfix(exp) {
+ 
+  let s = new Stack();
+  let postfix = new Stack();
+  console.log(exp);
+  
+  for (const key in exp) {
+   
+    if (exp[key] == '(' || exp[key] == '[' || exp[key] == '{') {s.push(exp[key]);}
+    
+    else if (exp[key] == ')' || exp[key] == ']' || exp[key] == '}')
+            {
+                
+                if(exp[key] == ')'){while (s.peek() != '(') {postfix.push(s.peek());s.pop();}s.pop();}
+                if(exp[key] == ']'){while (s.peek() != '[') {postfix.push(s.peek());s.pop();}s.pop();}
+                if(exp[key] == '}'){while (s.peek() != '{') {postfix.push(s.peek());s.pop();}s.pop();}
+            }
+    else if (isOperand(exp[key])) {postfix.push(exp[key]);}
+    else {
+				while (!s.isEmpty() && checkOperator(exp[key]) <= checkOperator(s.peek())) {
+					postfix.push(s.peek());
+          s.pop();
+				}
+
+
+				s.push(exp[key]);
+			}
+  }
+
+  while (s.length() > 0) {
+    postfix.push(s.peek());
+    s.pop();
+  }
+  
+  return postfix.getStack().filter(e=>e!=' ');
+}*/
+
+//let expression = "( A + B ) * ( C + D )";
+   
+//let a=infixToPostfix(expression.split(''));
+//console.log(a);
+
+
+
