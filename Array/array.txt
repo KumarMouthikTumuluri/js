@@ -43,7 +43,7 @@ const gradesProto = {
 // Implementation of the grade prototype
 console.log('\n## Using prototype, using Object.create()');
 const gradeO = [90,89,75,90,89,75,90,89,75,90,89,75,90,89,75,90,89,75];
-const gradeP = Object.create(gradesProto).init(gradeO);
+const gradeP = Object.create(gradesProto).init(gradeO);//https://stackoverflow.com/questions/7884081/what-is-the-use-of-the-init-usage-in-javascript
 gradeP.addGrade(90);
 gradeP.addGrade(25);
 console.log(`Avg grade: ${gradeP.displayAvg()}`);
