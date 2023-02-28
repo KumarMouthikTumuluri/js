@@ -48,3 +48,48 @@ test('Queue test 2', assert => {
   assert.equal(true, isPalindrome(word2), `the string = '${word2}' is palindrome`)
   assert.equal(false, isPalindrome(word3), `the string = '${word3}' is not a palindrome`)
 })
+
+#######################################################################################################################################################################
+Modify the priority queue example from Example 5-5 so that the higher-priority elements have higher numbers rather than lower numbers. Test your implementation with the example in the chapter.
+#######################################################################################################################################################################
+
+test('Queue test 1', assert => {
+  const patient = (name = 'generic', code = '0') => Object.assign({}, {name, code})
+
+  const ed = queue()
+  const p = patient('Smith', 5)
+  ed.enqueue(p)
+  const p2 = patient('Jones', 4)
+  ed.enqueue(p2)
+  const p3 = patient('Fehrenbach', 6)
+  ed.enqueue(p3)
+  const p4 = patient('Brown', 1)
+  ed.enqueue(p4)
+  const p5 = patient('Ingram', 1)
+  ed.enqueue(p5)
+
+  const dequeue = function () {
+    let priority = this.front().code
+    let position = 0
+    let dataStore = this.getQueue()
+    for (let i = 0; i < this.length(); i++) {
+      if (dataStore[i].code >= priority) {
+        priority = dataStore[i].code
+        position = i
+      }
+    }
+    return dataStore.splice(position, 1)
+  }
+
+  Object.assign(ed, {dequeue})
+  
+  let seen = []
+
+  while (ed.length() > 0) {
+    let {name} = ed.dequeue()[0]
+    seen.push(name)
+    // console.log('\nPatient being treated: ' + seen[seen.length - 1])
+  }
+
+  assert.equal(seen[0], 'Fehrenbach', 'dequeue fn override and dequeue by code')
+})
