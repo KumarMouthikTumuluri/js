@@ -1,1 +1,88 @@
+#######################################################################################################################################################################
+Modify the Queue class to create a Deque class. 
+A deque is a queue-like structure that allows elements to be added and removed from both the front and the back of the list. Test your class in a program
+#######################################################################################################################################################################
+export class Deque {
+  constructor(dataStore = [], top = 0) {
+    this.dataStore = dataStore;
+    this.top = top;
+  }
+
+  length() {
+    return this.top;
+  }
+
+  insertRear(element) {
+    this.dataStore[this.top++] = element;
+  }
+  insertFront(element) {
+    for (var i = this.top; i >= 1; --i) {
+      this.dataStore[i] = this.dataStore[i - 1];
+    }
+    this.dataStore[0] = element;
+    ++this.top;
+  }
+
+  getFront() {
+    return this.dataStore[0];
+  }
+  getRear() {
+    return this.dataStore[this.top - 1];
+  }
+  deleteRear() {
+    return this.dataStore.splice(--this.top, 1);
+  }
+  deleteFront() {
+    this.top--;
+    return this.dataStore.splice(0, 1);
+  }
+  getDeque() {
+    return this.dataStore;
+  }
+}
+
+
+import { Deque } from "./deque.js";
+
+const dq = new Deque();
+console.log("at start-->" + dq.getDeque() + " " + "length-->" + dq.length());
+
+dq.insertFront(20);
+console.log("after 20 insertFront-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.insertFront(10);
+console.log("after 10 insertFront-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.insertRear(30);
+console.log("after 30 insertRear-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.insertRear(50);
+console.log("after 50 insertRear-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.insertRear(80);
+console.log("after 80 insertRear-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+
+console.log("getFront-->" + dq.getFront()); // Retrieve the value at front-end
+console.log("getRear-->" + dq.getRear()); // Retrieve the value at rear-end
+
+dq.deleteFront();
+console.log("deletedFront-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.deleteRear();
+console.log("deletedRear-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.deleteFront();
+console.log("deletedFront-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.deleteRear();
+console.log("deletedRear-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+
+dq.deleteFront();
+console.log("deletedFront-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+
+#######################################################################################################################################################################
+
 
