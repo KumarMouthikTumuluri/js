@@ -29,11 +29,18 @@ export class Deque {
   getRear() {
     return this.dataStore[this.top - 1];
   }
+  
   deleteRear() {
-    return this.dataStore.splice(--this.top, 1);
+    console.log("delete rear before this.top-->" + this.top);
+    return (
+      this.dataStore.splice(--this.top, 1),
+      console.log("delete rear after this.top-->" + this.top)
+    );
   }
   deleteFront() {
+    console.log("delete front before this.top-->" + this.top);
     this.top--;
+    console.log("delete front after this.top-->" + this.top);
     return this.dataStore.splice(0, 1);
   }
   getDeque() {
@@ -85,4 +92,78 @@ console.log("length-->" + dq.length());
 
 #######################################################################################################################################################################
 
+export class Deque {
+  constructor(dataStore = []) {
+    this.dataStore = dataStore;
+  }
+
+  length() {
+    return this.dataStore.length;
+  }
+
+  insertRear(element) {
+    this.dataStore.push(element);
+  }
+  insertFront(element) {
+    this.dataStore.unshift(element);
+  }
+
+  getFront() {
+    return this.dataStore[0];
+  }
+  getRear() {
+    return this.dataStore[this.dataStore.length - 1];
+  }
+  deleteRear() {
+    return this.dataStore.pop();
+  }
+  deleteFront() {
+    return this.dataStore.shift();
+  }
+  getDeque() {
+    return this.dataStore;
+  }
+}
+
+
+import { Deque } from "./deque.js";
+
+const dq = new Deque();
+console.log("at start-->" + dq.getDeque() + " " + "length-->" + dq.length());
+
+dq.insertFront(20);
+console.log("after 20 insertFront-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.insertFront(10);
+console.log("after 10 insertFront-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.insertRear(30);
+console.log("after 30 insertRear-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.insertRear(50);
+console.log("after 50 insertRear-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.insertRear(80);
+console.log("after 80 insertRear-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+
+console.log("getFront-->" + dq.getFront()); // Retrieve the value at front-end
+console.log("getRear-->" + dq.getRear()); // Retrieve the value at rear-end
+
+dq.deleteFront();
+console.log("deletedFront-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.deleteRear();
+console.log("deletedRear-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.deleteFront();
+console.log("deletedFront-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+dq.deleteRear();
+console.log("deletedRear-->" + dq.getDeque());
+console.log("length-->" + dq.length());
+
+dq.deleteFront();
+console.log("deletedFront-->" + dq.getDeque());
+console.log("length-->" + dq.length());
 
