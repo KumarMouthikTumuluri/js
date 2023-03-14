@@ -1,0 +1,20 @@
+import { Dictionary } from "./dictionary.js";
+
+let s = 'the brown fox jumped over the blue fox';
+
+let arr=s.split(' ');
+let dictList = new Dictionary();
+
+for(let i=0;i< arr.length;++i){
+  let mySubString = arr[i];
+  let count=s.split(mySubString).length - 1;
+ // console.log(arr[i]+":"+count);
+
+  dictList.add(arr[i],count);
+}
+
+dictList.showAll();
+
+console.log("$$$$$$$$$$$$$$Sort$$$$$$$$$$$$$44")
+
+dictList.showAllSort();
