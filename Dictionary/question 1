@@ -1,0 +1,32 @@
+import { Dictionary } from "./dictionary.js";
+
+import fs from 'fs';
+function createArr(file) {
+  // const { readFileSync } = require('./fs');
+  const arr = fs.readFileSync(file).toString().split('\n');
+    //.replace(/\r\n/g, '\n').split('\n');
+     for (let i = 0; i < arr.length; ++i) {
+      arr[i] = arr[i].trim();
+    }
+  return arr;
+}
+
+
+let dict = createArr("dictionary.txt");
+
+
+let dictList = new Dictionary();
+for(let i=0;i<dict.length;++i){
+   let a=dict[i].split(':');
+   dictList.add(a[0],a[1]);
+}
+
+dictList.showAll();
+//dictList.remove("David");
+//console.log("$$$$$$$$$$$$$$$$$$$$$$$After David removal");
+//dictList.showAll();
+
+//console.log("jennifer number is :--->"+dictList.find("Jennifer"))
+//console.log("$$$$$$$$$$$$$$$$$$$$$$$After clear");
+//dictList.clear();
+//dictList.showAll();
