@@ -72,7 +72,7 @@ class HashTableLinearP extends HashTable {
   showDistro() {
     for (const key in this.table) {
       if(this.table[key] !== undefined) {
-        console.log(key, ' : ', this.values[key]);
+        console.log(this.table[key], ' : ', this.values[key]);
       }
     }
   }
