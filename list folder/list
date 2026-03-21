@@ -14,7 +14,7 @@ this.loopFront = function(fn){for(this.firstPos();this.currentPos() < this.lengt
 this.loopBack = function(fn){for(this.lastPos();this.currentPos() >= 0;this.previousPos()){fn(this.getPos())}}
 
 // mutator methods
- this.append = (...element) => {for(let i in element){this.dataStore[this.dataStore.length] = element[i]}}
+ this.append=(...elements)=>this.dataStore.push(...elements);
  this.clear = () => this.dataStore = [];
  this.remove = (element) => this.dataStore.splice(this.find(element),1);
  this.insertAfter = (element,after) => this.dataStore.splice(this.find(after)+1,0,element);
