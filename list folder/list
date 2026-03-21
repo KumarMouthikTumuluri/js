@@ -21,7 +21,7 @@ this.loopBack = function(fn){for(this.lastPos();this.currentPos() >= 0;this.prev
  
 // helper methods
 this.length = () => this.dataStore.length;
-this.find = (element) =>  this.dataStore.indexOf(element) > -1 ? this.dataStore.indexOf(element) : (function() {throw Error('yes');} )();
+this.find=(element)=>this.dataStore.indexOf(element)!==-1?this.dataStore.indexOf(element):(()=>{throw new Error('Element not Found');})()
 this.print = () => console.log(this.dataStore);
 this.displayList = () => this.dataStore.forEach((item, counter) => {item instanceof Object ? console.log(`${counter + 1}.- ${Object.values(item)}`) : console.log(`${counter + 1}.- ${item}`);})
 
