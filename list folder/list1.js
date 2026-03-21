@@ -12,6 +12,26 @@ List.prototype.insertLarge= function insertIfLarge(element){
    }
 }
 
+List.prototype.insertLarge = function (element) {
+  switch (typeof element) {
+
+    case "string":
+    case "number": {
+      const sameType = this.dataStore.filter(
+        a => typeof a === typeof element
+      );
+
+      if (sameType.length === 0 || sameType.every(a => element > a)) {
+        this.append(element);
+      }
+      break;
+    }
+
+    default:
+      throw new Error('wrong datatype');
+  }
+};
+
 
 var names = new List();
 names.add('Barbara','Cynthia','Sylvester','Slice');
