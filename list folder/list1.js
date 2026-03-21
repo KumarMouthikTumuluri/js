@@ -47,46 +47,32 @@ numbers.insertLarge(1000);
 numbers.print();
 
 ##########################################################################################################################
+import { List } from './List.js';
+
 class GenericList extends List {
-  constructor(dataStore, listSize) {
-    super(dataStore, listSize);
+  constructor(dataStore = []) {
+    super(dataStore); 
   }
 
-  insertGraterThan(element) {
-    let grater = false;
-    let value  = 0;
-    for (const key in this.dataStore) {
-      if( typeof element !== 'string' && typeof this.dataStore[key] === 'string' ||
-          typeof element === 'string' && typeof this.dataStore[key] !== 'string' ) {
-        continue;
-      }
-      value  = (typeof element === 'string') ? this.dataStore[key] + '' : this.dataStore[key];
-      greater = (element > value) ? true : false;
-    }
-    if(greater) {
-      this.dataStore.push(element);
-      console.log(`The element: ${element} is grater than elemnt's in the list`);
+  insertGreaterThan(element) {
+    const sameType = this.dataStore.filter(item => typeof item === typeof element);
+    // Logic: check if list is empty of that type OR element is greater than all existing items
+    if (sameType.length === 0 || sameType.every(a => element > a)) {
+      this.append(element);
+      console.log(`Success: ${element} is greater than similar items.`);
     } else {
-      console.log(`The element: ${element} is not grater than elemnt's in the list`);
+      console.log(`Failed: ${element} is not greater than all similar items.`);
     }
   }
 
   insertSmallerThan(element) {
-    let smaller = false;
-    let value   = 0;
-    for (const key in this.dataStore) {
-      if( typeof element !== 'string' && typeof this.dataStore[key] === 'string' ||
-          typeof element === 'string' && typeof this.dataStore[key] !== 'string' ) {
-        continue;
-      }
-      value  = (typeof element === 'string') ? this.dataStore[key] + '' : this.dataStore[key];
-      smaller = (element < value) ? true : false;
-    }
-    if(smaller) {
-      this.dataStore.push(element);
-      console.log(`The element: ${element} is smaller than elemnt's in the list`);
+    const sameType = this.dataStore.filter(item => typeof item === typeof element);
+    // FIX: Change 'element > a' to 'element < a'
+    if (sameType.length === 0 || sameType.every(a => element < a)) {
+      this.append(element);
+      console.log(`Success: ${element} is smaller than similar items.`);
     } else {
-      console.log(`The element: ${element} is not smaller than elemnt's in the list`);
+      console.log(`Failed: ${element} is not smaller than all similar items.`);
     }
   }
 }
