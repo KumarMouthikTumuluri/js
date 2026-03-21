@@ -1,3 +1,29 @@
+export class List{
+    constructor(){
+    this.dataStore=[];
+    this.pos=0;
+    this.firstPos=()=>this.pos=0;
+    this.lastPos=()=>this.pos=this.dataStore.length-1;
+    this.previousPos=()=>this.pos < 0 ? this.pos = 0 : this.pos -= 1;;
+    this.nextPos=()=>this.pos>this.dataStore.length-1?this.pos=this.dataStore.length-1:this.pos+=1;
+    this.currentPos=()=>this.pos;
+    this.getPos=()=>this.dataStore[this.pos];
+    this.length=()=>this.dataStore.length;
+    this.movetoPos=(pos)=>pos > this.dataStore.length || pos < 0 ? this.currentPos() : this.pos = pos;
+    this.loopFront = function(fn){for(this.firstPos();this.currentPos() < this.length();this.nextPos()){fn(this.getPos())}}
+    this.loopBack = function(fn){for(this.lastPos();this.currentPos() >0;this.previousPos()){fn(this.getPos())}}
+    this.append=(...elements)=>this.dataStore.push(...elements);
+     this.clear = () => this.dataStore = [];
+     this.find=(element)=>this.dataStore.indexOf(element)!==-1?this.dataStore.indexOf(element):(()=>{throw new Error('Element not Found');})()
+     this.displayList=()=>this.dataStore.forEach((item,i)=>{item instanceof Object?console.log(`${i+1}->${Object.values(item)}`):console.log(`${i+1}->${item}`)})
+     this.print = () => console.log(this.dataStore);
+
+    }
+}
+
+#################################################################################################################################################################################
+
+
 class List {
 constructor(){
 this.dataStore = [];
@@ -30,6 +56,7 @@ this.displayList = () => this.dataStore.forEach((item, counter) => {item instanc
 
 
 module.exports = List;
+
 #######################################################################################################################################################################
 
 class List {
