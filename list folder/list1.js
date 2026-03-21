@@ -88,49 +88,42 @@ console.log('CHAPTER 3');
 console.log('### Excercise 1');
 
 // Numeric list only
-const list = new GenericList([1,4,5,7], 4);
-list.insertGraterThan(6);
-list.insertGraterThan(15);
-console.log(list.toString());
+// Note: Removed the second parameter (4)
+const list = new GenericList([1, 4, 5, 7]); 
+list.insertGreaterThan(6);  // Failed: 6 is not greater than 7
+list.insertGreaterThan(15); // Success: 15 is greater than all
+console.log('List 1:', list.toString());
 
-// string list only
-const list2 = new GenericList(['a','c','f','g'], 4);
-list2.insertGraterThan('b');
-list2.insertGraterThan('z');
-console.log(list2.toString());
+// String list only
+const list2 = new GenericList(['a', 'c', 'f', 'g']);
+list2.insertGreaterThan('b'); // Failed: 'b' is not greater than 'g'
+list2.insertGreaterThan('z'); // Success: 'z' is greater than all
+console.log('List 2:', list2.toString());
 
-// mixed list
-const list3 = new GenericList([1,'c',2,'g'], 4);
-list3.insertGraterThan('b');
-list3.insertGraterThan('z');
-list3.insertGraterThan(3);
-list3.insertGraterThan(0);
-console.log(list3.toString());
+// Mixed list
+const list3 = new GenericList([1, 'c', 2, 'g']);
+list3.insertGreaterThan('b'); // Failed: 'b' < 'c' and 'g'
+list3.insertGreaterThan('z'); // Success: 'z' > all strings
+list3.insertGreaterThan(3);   // Success: 3 > all numbers (1, 2)
+list3.insertGreaterThan(0);   // Failed: 0 < 1 and 2
+console.log('List 3:', list3.toString());
 
-// ###################################
-/*
-2.- Write a function that inserts an element into a list only if the element to be inserted
-    is smaller than any of the elements currently in the list.
-*/
-console.log('\n\n### Excercise 2');
+console.log('\n### Exercise 2');
 
 // Numeric list only
-const list4 = new GenericList([1,4,5,7], 4);
-list4.insertSmallerThan(2);
-list4.insertSmallerThan(15);
-console.log(list4.toString());
+const list4 = new GenericList([1, 4, 5, 7]);
+list4.insertSmallerThan(2);  // Failed: 2 is not smaller than 1
+list4.insertSmallerThan(0);  // Success: 0 is smaller than all (Corrected from 15)
+console.log('List 4:', list4.toString());
 
-// string list only
-const list5 = new GenericList(['a','c','f','g'], 4);
-list5.insertSmallerThan('b');
-list5.insertSmallerThan('z');
-console.log(list5.toString());
+// String list only
+const list5 = new GenericList(['a', 'c', 'f', 'g']);
+list5.insertSmallerThan('0'); // Success: Numbers/Symbols usually come before 'a'
+list5.insertSmallerThan('z'); // Failed: 'z' is not smaller than 'a'
+console.log('List 5:', list5.toString());
 
-// mixed list
-const list6 = new GenericList([1,'c',2,'g'], 4);
-list6.insertSmallerThan('b');
-list6.insertSmallerThan('z');
-list6.insertSmallerThan(3);
-list6.insertSmallerThan(0);
-console.log(list6.toString());
-
+// Mixed list
+const list6 = new GenericList([1, 'c', 2, 'g']);
+list6.insertSmallerThan('a'); // Success: 'a' is smaller than 'c' and 'g'
+list6.insertSmallerThan(0);   // Success: 0 is smaller than 1 and 2
+console.log('List 6:', list6.toString());
