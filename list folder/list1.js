@@ -5,19 +5,11 @@
 
 
 let List = require('../list')
-List.prototype.insertLarge = function insertIfLarger(element){
-switch (typeof(element)){
-  case "string" :
-    if(this.dataStore.filter(a=>a>element) == 0){this.add(element)}
-    break;
-  case "number" :
-    if(Math.max.apply(null,this.dataStore.filter(a=>typeof(a)=='number'))<element){this.add(element)} //Math.max(...this.dataStore.filter(a=>typeof(a)=='number'))<element;
-    break;
-    
-  default:
-    throw new Error('wrong datatype');
-    break;
- }
+List.prototype.insertLarge= function insertIfLarge(element){
+   const sameType = this.dataStore.filter(a=>typeof(a)===typeof(element));
+   if(sameType.length==0|| sameType.every(a=>element>a)){
+    this.append(element);
+   }
 }
 
 
