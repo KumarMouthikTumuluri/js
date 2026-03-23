@@ -4,15 +4,9 @@ let List = require('../list')
 
 List.prototype.insertSmall = function insertIfSmaller(element){
   switch (typeof(element)){
-    case "string":
-      if(this.dataStore.filter(a=>a<element) == 0){this.add(element)}
-      break
-    case "number":
-      if(Math.min.apply(null,this.dataStore.filter(a=>typeof(a)=='number'))>element){this.add(element)}////Math.min(...this.dataStore.filter(a=>typeof(a)=='number'))>element;
-      break
-    default:
-      throw new Error('wrong datatype')
-      break
+    const sameType = this.dataStore.filter(a=>typeof(a)===typeof(element));
+   if(sameType.length==0|| sameType.every(a=>element<a)){
+    this.append(element);
   }
 }
 
