@@ -2,27 +2,61 @@
 // ###################################
 
 import { List } from './list.js';
-import fs from 'fs';
+//import fs from 'fs';
 
-function createArr(file) {
-  // const { readFileSync } = require('./fs');
-  const arr = fs.readFileSync(file).toString().replace(/\r\n/g, '\n').split('\n');
-  for (let i = 0; i < arr.length; ++i) {
-    arr[i] = arr[i].trim();
-  }
+// function createArr(file) {
+//   // const { readFileSync } = require('./fs');
+//   const arr = fs.readFileSync(file).toString().replace(/\r\n/g, '\n').split('\n');
+//   for (let i = 0; i < arr.length; ++i) {
+//     arr[i] = arr[i].trim();
+//   }
+//   return arr;
+// }
+
+-//async--> This function will work asynchronously It returns a Promise automatically
+//  async function test() {
+ // return 10;
+//}
+  //await
+//👉 Used inside async
+//const data = await fetch(url);
+  //Without await:code continues immediately ❌
+//With await: waits for result ✅
+  //fetch :-Built-in browser function
+  //Meaning:Used to get data from server/file (HTTP request)
+  //fetch('file.txt')-->Promise → Response
+  //sync function createArr(file)
+  //async ante:ee function Promise return chestundi async operations (like fetch) use cheyadaniki
+  //const res = await fetch(file);
+  //file.txt ni server nundi request chestundi await → file vachaka next line ki velthundi 
+  //res = response object
+  //const text = await res.text();response → plain text
+  //toString()-text already string → optional (extra, not needed)
+  // replace(/\r\n/g, '\n') Windows line breaks fix
+  //split('\n')  lines ni array ga convert
+  //map(line => line.trim()) spaces remove
+  //return arr; Promise → ["Inception", "Avatar", "Titanic"]
+  //function Promise return chestundi .then() lo result vastundi  a = final array
+ // .then() ante:➡️ “result vachaka ee code run chey” Promise { pending }
+async function createArr(file) {
+
+  const res = await fetch(file);
+  const text= await res.text();
+  const arr= text.toString().replace(/\r\n/g, '\n').split('\n').map(line=>line.trim());
   return arr;
 }
 
+createArr('./file.txt').then(a=>console.log(a));
+  
 
 let customerList = new List();
 
 class Customer {
-  constructor(name = 'Juan Colorado', movie = 'Monarcas Morelia Movie') {
+  constructor(name , movie) {
     this.name = name;
     this.movie = movie;
   }
 }
-
 class movieList extends List {
   constructor(rentedList = new List()) {
     super();
@@ -57,7 +91,7 @@ class movieList extends List {
 
 
 let movies = createArr("films.txt");
-
+//MovieList = List features + movieList features
 let MovieList = new movieList();
 for (var i = 0; i < movies.length; ++i) {
   MovieList.add(movies[i]);
